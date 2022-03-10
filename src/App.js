@@ -1,11 +1,10 @@
+import { useState } from 'react';
 import './App.scss';
 
 function App() {
-  let name = "mario"
+  let [name, setName] = useState("mario")
 
-  const handleClick = () => {
-    name = 'luigi'
-  }
+  const handleClick = () => setName("luigi")
   return (
    <div className="App">
       <h1>Hi my name is {name}</h1>
