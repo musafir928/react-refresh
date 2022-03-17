@@ -1,19 +1,14 @@
 import { useState } from "react"
 import "./App.scss"
 import Modal from "./components/Modal"
+import NewEventForm from "./components/NewEventForm"
 import Title from "./components/Title"
 
 function App() {
     const [showTitle, setShowTitle] = useState(true)
     const [showModal, setShowModal] = useState(false)
-    const [events, setEvents] = useState([
-        { title: "football", id: 1 },
-        { title: "baseball", id: 2 },
-        { title: "basketball", id: 3 },
-    ])
+    const [events, setEvents] = useState([])
 
-    const addEvent = () =>
-        setEvents((p) => [...p, { id: p.length + 1, title: "new event" }])
     const handleDelete = (i) => setEvents((p) => p.filter((e) => e.id !== i))
     const toggleTitle = () => setShowTitle((p) => !p)
     return (
@@ -21,12 +16,6 @@ function App() {
             <div className='button-container d-flex justify-content-around'>
                 <button className='btn btn-primary mb-5' onClick={toggleTitle}>
                     {showTitle ? "hide title" : "show title"}
-                </button>
-                <button
-                    className='btn btn-primary mb-5'
-                    onClick={() => setShowModal(true)}
-                >
-                    open modal
                 </button>
             </div>
             {showTitle && (
@@ -44,7 +33,7 @@ function App() {
                         className='list-group-item d-flex justify-content-around'
                         key={i + 1}
                     >
-                        {i + 1}. {title}
+                         {title}
                         <button
                             className='btn btn-danger'
                             onClick={() => handleDelete(id)}
@@ -54,12 +43,12 @@ function App() {
                     </li>
                 ))}
             </ul>
-            <button className='btn btn-info mt-3' onClick={addEvent}>
+            <button className='btn btn-info mt-3' onClick={()=>setShowModal(true)}>
                 Add Event
             </button>
             {showModal && (
-                <Modal setShowModal={setShowModal}>
-                    <h1>hello from App component</h1>
+                <Modal >
+                    <NewEventForm setShowModal={setShowModal} setEvents={setEvents}/>
                 </Modal>
             )}
         </div>
