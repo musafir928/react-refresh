@@ -2,6 +2,7 @@ import { useState } from "react"
 import "./App.scss"
 import Modal from "./components/Modal"
 import NewEventForm from "./components/NewEventForm"
+import NewEventsUseRef from "./components/NewEventsUseRef"
 import Title from "./components/Title"
 
 function App() {
@@ -46,9 +47,14 @@ function App() {
             <button className='btn btn-info mt-3' onClick={()=>setShowModal(true)}>
                 Add Event
             </button>
-            {showModal && (
+            {/* {showModal && (
                 <Modal >
                     <NewEventForm setShowModal={setShowModal} setEvents={setEvents}/>
+                </Modal>
+            )} */}
+            {showModal && (
+                <Modal >
+                    <NewEventsUseRef setShowModal={setShowModal} setEvents={setEvents}/>
                 </Modal>
             )}
         </div>
