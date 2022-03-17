@@ -29,14 +29,16 @@ function App() {
                 </>
             )}
             <ul className='list-group'>
-                {events.map(({ title, id }, i) => (
+                {events.map(({ title,date, location, id }, i) => (
                     <li
-                        className='list-group-item d-flex justify-content-around'
+                        className='list-group-item row'
                         key={i + 1}
                     >
-                         {title}
+                        <p className="col-3">{title}</p>
+                        <p className="col-3">{date}</p>
+                        <p className="col-3">{location}</p>
                         <button
-                            className='btn btn-danger'
+                            className='btn btn-danger col-3'
                             onClick={() => handleDelete(id)}
                         >
                             delete event
@@ -47,16 +49,16 @@ function App() {
             <button className='btn btn-info mt-3' onClick={()=>setShowModal(true)}>
                 Add Event
             </button>
-            {/* {showModal && (
+            {showModal && (
                 <Modal >
                     <NewEventForm setShowModal={setShowModal} setEvents={setEvents}/>
                 </Modal>
-            )} */}
-            {showModal && (
+            )}
+            {/* {showModal && (
                 <Modal >
                     <NewEventsUseRef setShowModal={setShowModal} setEvents={setEvents}/>
                 </Modal>
-            )}
+            )} */}
         </div>
     )
 }

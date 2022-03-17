@@ -3,15 +3,17 @@ import { useState } from "react"
 export default function NewEventForm({setShowModal, setEvents}) {
     const [title, setTitle] = useState("")
     const [date, setDate] = useState("")
+    const [location, setLocation] = useState("San Francisco")
 
     const resetForm = (e) => {
         setTitle("")
         setDate("")
+        setLocation("San Francisco")
     }
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        const event = {title, date, id: Math.floor(Math.random()*10000)}
+        const event = {title, date, location, id: Math.floor(Math.random()*10000)}
         setEvents(p=>[...p, event])
         resetForm();
     }
@@ -26,6 +28,15 @@ export default function NewEventForm({setShowModal, setEvents}) {
           <label className="col-12 my-5">
               <span className="form-label">Event Date:</span>
               <input type="date" className="form-control" onChange={e=>setDate(e.target.value)} value={date} required/>
+            </label>
+            <br />
+          <label className="col-12 my-5">
+              <span className="form-label">Event Date:</span>
+                <select className="form-control" onChange={(e)=>setLocation(e.target.value)}>
+                    <option value="manchester">Manchester</option>
+                    <option value="lopnur">Lopnur</option>
+                    <option value="urumchi">Urumchi</option>
+                </select>
             </label>
             <br />
             <div className="col-12 d-flex justify-content-around">
