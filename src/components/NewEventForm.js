@@ -4,10 +4,6 @@ export default function NewEventForm({setShowModal, setEvents}) {
     const [title, setTitle] = useState("")
     const [date, setDate] = useState("")
 
-    const handleChange = e => {
-        setTitle(e.target.value)
-    }
-
     const resetForm = (e) => {
         setTitle("")
         setDate("")
